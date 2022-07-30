@@ -20,23 +20,18 @@ const Navbar = () => {
             <div className=" mt-3  ">
               <ul className="  flex justify-center text-2xl">
                 <li className="mx-5 ">
-                  {" "}
                   <button onClick={() => navigate("/home")}>Collections</button>
                 </li>
                 <li className="mx-5">
-                  {" "}
                   <button onClick={() => navigate("/Men")}>Products</button>
                 </li>
                 <li className="mx-5">
-                  {" "}
                   {/* <button onClick={() => navigate("/Cart")}>Cart</button> */}
                 </li>
               </ul>
             </div>
           </div>
           <ul className="flex flex-col md:flex-row text-center   px-10 mt-3">
-            {/* <li className='mx-5'>    <button onClick={()=>navigate('/admin')}>Admin</button></li>
-                <li className='mx-5'>    <button onClick={()=>navigate('/login')}>Login</button></li> */}
             <li className="mx-5">
               {" "}
               <button onClick={() => navigate("/Logout")}>Logout</button>
