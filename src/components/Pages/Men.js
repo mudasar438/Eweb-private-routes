@@ -20,14 +20,16 @@ const Men = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("https://fakse-store-api.herokuapp.com/api/v1/products");
+    const res = await axios.get(
+      "https://fakse-store-api.herokuapp.com/api/v1/products"
+    );
     setData(res.data);
   };
 
   useEffect(() => {
     getData();
   }, []);
-  console.log( "data from api:",data)
+  console.log("data from api:", data);
   // console.log(token);
   return (
     <>
@@ -108,7 +110,6 @@ const Men = () => {
                     <p className="text-blue-500">{item.description}</p>
                     <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                       <Link to={`/section/${item.id}`}>
-                        {/* <h1 className="title">{item.title}</h1> */}
                         <span class="mx-1">Add to cart</span>
                       </Link>
                     </button>
