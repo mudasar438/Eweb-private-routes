@@ -32,8 +32,12 @@ const Navbar = () => {
             </div>
           </div>
           <ul className="flex flex-col md:flex-row text-center   px-10 mt-3">
+          <li className="mx-5">
+             
+             <button onClick={() => navigate("/addtoCart")} className="hover:bg-red-900 p-2 rounded-md">Cart</button>
+           </li>
             <li className="mx-5">
-              {" "}
+             
               <button onClick={() => navigate("/Logout")} className="hover:bg-red-900 p-2 rounded-md">Logout</button>
             </li>
           </ul>

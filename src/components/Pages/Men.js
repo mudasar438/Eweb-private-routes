@@ -5,6 +5,9 @@ import shopping from "../imgs/shoping.jpg";
 import product from "../imgs/product.jpg";
 import Navbar from "../Pages/navbar";
 import { Link } from "react-router-dom";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+
 
 function get() {
   var getJson = localStorage.getItem("token");
@@ -15,9 +18,21 @@ function get() {
 }
 
 const Men = () => {
+  const  [storageData , setStorageData] =[];
+
+
   const [token, setToken] = useState(get());
 
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductPerPage] = useState(8);
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProduct = data.slice(indexOfFirstProduct, indexOfLastProduct);
+  const paginate = (e, value) => {
+    setCurrentPage(value);
+    window.scrollTo({ top: 1800, behavior: "smooth" });
+  };
 
   const getData = async () => {
     const res = await axios.get(
@@ -29,8 +44,20 @@ const Men = () => {
   useEffect(() => {
     getData();
   }, []);
-  console.log("data from api:", data);
+  // console.log("data from api:", data);
   // console.log(token);
+ 
+    
+    const cartAdd = (item) => {
+    
+      const storageData = JSON.parse(localStorage.getItem("cartmudasar"));
+      console.log("mudassar",storageData);
+      
+        localStorage.setItem("cartmudasar", JSON.stringify([...storageData, item]));
+      
+    }
+  
+    console.log("storageData", storageData);
   return (
     <>
       <Navbar />
@@ -89,10 +116,10 @@ const Men = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4  p-5  mb-[50px]">
-          {data.map((item) => {
+        <div className="grid grid-cols-1 md:grid-cols-4  p-5  mb-[100px]">
+          {currentProduct.map((item) => {
             return (
-              <div className="w-full  p-1 md:p-2 my-[50px] " key={item.id}>
+              <div className="w-full  p-1 md:p-2 my-[100px] " key={item.id}>
                 <ul className="bg-white rounded-xl ">
                   <li className=" h-[150px] mb-12 mt-12">
                     <img
@@ -108,17 +135,35 @@ const Men = () => {
                     <p class=""> Price {item.price}</p>
                     <p className="text-blue-500">{item.size}</p>
                     <p className="text-blue-500">{item.description}</p>
-                      <Link to={`/section/${item.id}`}>
-                    <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                        <span class="mx-1">Add to cart</span>
+                      
+                    <button  class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                        <span class="mx-1" onClick={()=>{
+                          cartAdd(item);
+                        }}>Add to cart</span>
                     </button>
-                      </Link>
+                      
                   </li>
                 </ul>
               </div>
             );
           })}
         </div>
+      </div>
+      <div className="flex justify-center my-[100px]">
+        <Stack>
+          {data.length > 8 && (
+            <Pagination
+              count={Math.ceil(data.length / productsPerPage)}
+              page={currentPage}
+              defaultPage={1}
+              onChange={paginate}
+              color="primary"
+              variant="outlined"
+              shape="rounded"
+              size="large"
+            />
+          )}
+        </Stack>
       </div>
     </>
   );
