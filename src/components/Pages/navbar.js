@@ -25,7 +25,7 @@ const Navbar = () => {
                 </li>
                 <li className="mx-5">
                   {" "}
-                  <button onClick={() => navigate("/Men")}>Men</button>
+                  <button onClick={() => navigate("/Men")}>Products</button>
                 </li>
                 <li className="mx-5">
                   {" "}

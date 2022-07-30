@@ -21,7 +21,7 @@ function Section() {
     const fetch = async () => {
       try {
         const { data } = await axios.get(
-          `https://api.escuelajs.co/api/v1/products/${id}`
+          `https://fakse-store-api.herokuapp.com/api/v1/products/${id}`
         );
         setProduct(data);
         console.log(data);
@@ -62,7 +62,7 @@ function Section() {
 //     localStorage.setItem("cart", JSON.stringify(data));
     
   return (<div className="max-w-screen-2xl mx-auto bg-slate-500 text-white">
-    <div className="flex justify-center w-[90%] mx-auto h-[100vh]">
+    <div className="flex flex-col  md:flex-row justify-center w-[90%] mx-auto h-[100vh]">
       <div className="">
         <div className="image mt-5">
           <img

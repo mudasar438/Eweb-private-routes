@@ -20,15 +20,15 @@ const Men = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("https://fakse-store-api.herokuapp.com/api/v1/products?limit=50&offset=1");
+    const res = await axios.get("https://fakse-store-api.herokuapp.com/api/v1/products");
     setData(res.data);
   };
 
   useEffect(() => {
     getData();
   }, []);
-  // console.log(data)
-  console.log(token);
+  console.log( "data from api:",data)
+  // console.log(token);
   return (
     <>
       <Navbar />
