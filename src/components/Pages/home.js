@@ -111,8 +111,8 @@ const Home = () => {
                     <p class=""> Price {item.name}</p>
                     {/* <p className="text-blue-500">{item.size}</p>
                           <p className="text-blue-500">{item.detail}</p> */}
-                    <button class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                      <span class="mx-1" onClick={(e) => addToCart(item)}>
+                    <button onClick={(e) => addToCart(item)} class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                      <span class="mx-1" >
                         {" "}
                         Preview Image
                       </span>
