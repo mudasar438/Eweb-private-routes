@@ -26,7 +26,7 @@ const Login = () => {
   }, []);
   const postData = () => {
     const options = {
-      url: " https://api.escuelajs.co/api/v1/auth/login",
+      url: " https://fakse-store-api.herokuapp.com/api/v1/auth/login",
       method: "POST",
       headers: {
         Accept: "application/json",

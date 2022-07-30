@@ -16,7 +16,7 @@ const Protected = (props) => {
   return (
     <>
       <div className="">
-      
+     
         <Component/>
       </div>
     </>

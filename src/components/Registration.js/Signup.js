@@ -49,7 +49,7 @@ const Signup = () => {
 
   const postData = () => {
     const options = {
-      url: " https://api.escuelajs.co/api/v1/users/",
+      url: " https://fakse-store-api.herokuapp.com/api/v1/users",
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -76,7 +76,7 @@ const Signup = () => {
     
     validationFun();
     postData();
-    navigate("/login");
+    navigate("/");
   };
   // console.log(value);
   return (

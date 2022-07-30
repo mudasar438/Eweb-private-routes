@@ -29,7 +29,7 @@ const Navbar = () => {
                 </li>
                 <li className="mx-5">
                   {" "}
-                  <button onClick={() => navigate("/Cart")}>Cart</button>
+                  {/* <button onClick={() => navigate("/Cart")}>Cart</button> */}
                 </li>
               </ul>
             </div>

@@ -20,7 +20,7 @@ const Men = () => {
   const [data, setData] = useState([]);
 
   const getData = async () => {
-    const res = await axios.get("https://api.escuelajs.co/api/v1/products");
+    const res = await axios.get("https://fakse-store-api.herokuapp.com/api/v1/products?limit=50&offset=1");
     setData(res.data);
   };
 

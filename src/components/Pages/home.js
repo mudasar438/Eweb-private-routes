@@ -12,7 +12,7 @@ const Home = () => {
     const [data, setData] = useState([]);
 
     const getData = async () => {
-        const res = await axios.get('https://api.escuelajs.co/api/v1/categories');
+        const res = await axios.get('https://fakse-store-api.herokuapp.com/api/v1/categories?limit=50');
         setData(res.data);
     }
     
