@@ -15,15 +15,13 @@ const Login = () => {
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
   };
-
+  // submit fucntion
   const handleSubmit = (e) => {
     e.preventDefault();
     postData();
     console.log("input values ", value);
   };
-  useEffect(() => {
-   
-  }, []);
+  useEffect(() => {}, []);
   const postData = () => {
     const options = {
       url: " https://fakse-store-api.herokuapp.com/api/v1/auth/login",
@@ -42,24 +40,20 @@ const Login = () => {
       console.log(response.data);
       if (response.data) {
         setToken(response.data);
-        // if(token !== null){
-        //   console.log("token",token);
 
-          localStorage.setItem("token",JSON.stringify(response.data));
-        // }
+        localStorage.setItem("token", JSON.stringify(response.data));
+
         navigate("/home");
       }
-
-      // set local storage
     });
   };
 
- console.log("token",token);
+  console.log("token", token);
 
   const signup = () => {
     console.log("You are clickingo");
 
-    navigate('/signup')
+    navigate("/signup");
   };
 
   return (
