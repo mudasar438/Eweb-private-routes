@@ -60,9 +60,9 @@ const Signup = () => {
         email: value.email,
         password: value.password,
         role: firstName,
-        avatar: "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y"
+        avatar:
+          "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y",
         // firstName: firstName,
-       
       },
     };
 
@@ -73,7 +73,7 @@ const Signup = () => {
 
   const handleRegistration = (e) => {
     e.preventDefault();
-    
+
     validationFun();
     postData();
     navigate("/");
@@ -112,10 +112,8 @@ const Signup = () => {
                     Username
                   </label>
                   <input
-                    // onChange={(e)=>setName(e.target.value)}
                     type="text"
                     name="userName"
-                    // value={userName}
                     onChange={handleChange}
                     placeholder="Write your username"
                     className="w-full bg-black py-3 px-12 border hover: border-gray-500 rounded shadow text-base font-sans"
@@ -126,7 +124,6 @@ const Signup = () => {
                   <input
                     type="email"
                     name="email"
-                    //   value={value.email}
                     onChange={handleChange}
                     placeholder="Write your email"
                     className="w-full bg-black py-3 px-12 border hover: border-gray-500 rounded shadow text-base font-sans"
@@ -152,7 +149,6 @@ const Signup = () => {
                   <input
                     type="password"
                     name="confirmPassword"
-                    // value={confirmPassword}
                     onChange={handleChange}
                     placeholder="Write your password"
                     className=" w-full bg-black py-3 px-12 border hover: border-gray-500 rounded shadow text-base font-sans"
