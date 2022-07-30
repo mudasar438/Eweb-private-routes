@@ -20,10 +20,10 @@ const Navbar = () => {
             <div className=" mt-3  ">
               <ul className="  flex justify-center text-2xl">
                 <li className="mx-5 ">
-                  <button onClick={() => navigate("/home")}>Collections</button>
+                  <button onClick={() => navigate("/home")} className="hover:bg-blue-900 p-2 rounded-md ">Collections</button>
                 </li>
                 <li className="mx-5">
-                  <button onClick={() => navigate("/Men")}>Products</button>
+                  <button onClick={() => navigate("/Men")} className="hover:bg-blue-900 p-2 rounded-md">Products</button>
                 </li>
                 <li className="mx-5">
                   {/* <button onClick={() => navigate("/Cart")}>Cart</button> */}
@@ -34,7 +34,7 @@ const Navbar = () => {
           <ul className="flex flex-col md:flex-row text-center   px-10 mt-3">
             <li className="mx-5">
               {" "}
-              <button onClick={() => navigate("/Logout")}>Logout</button>
+              <button onClick={() => navigate("/Logout")} className="hover:bg-red-900 p-2 rounded-md">Logout</button>
             </li>
           </ul>
         </div>
