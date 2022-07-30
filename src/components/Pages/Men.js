@@ -47,14 +47,28 @@ const Men = () => {
   // console.log("data from api:", data);
   // console.log(token);
  
-    
+
+ 
     const cartAdd = (item) => {
-    
+      console.log("item", item);
+const {id, title, price, images} = item;
+// console.log("item destrict", id, name, price, image);
+const allData = {
+  id:id,
+  name:title,
+  price:price,
+  image:images,
+    quantity: 1
+}
+
+console.log("allData with quentity", allData);
+
+
+      
       const storageData = JSON.parse(localStorage.getItem("cartmudasar"));
-      console.log("mudassar",storageData);
-      
-        localStorage.setItem("cartmudasar", JSON.stringify([...storageData, item]));
-      
+      console.log("Storage", storageData);
+      localStorage.setItem("cartmudasar", JSON.stringify([...storageData, allData]));
+    
     }
   
     console.log("storageData", storageData);
@@ -137,9 +151,7 @@ const Men = () => {
                     <p className="text-blue-500">{item.description}</p>
                       
                     <button  class="flex items-center justify-center w-full px-2 py-2 mt-4 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
-                        <span class="mx-1" onClick={()=>{
-                          cartAdd(item);
-                        }}>Add to cart</span>
+                        <span class="mx-1" onClick={(e)=>cartAdd(item)}>Add to cart</span>
                     </button>
                       
                   </li>

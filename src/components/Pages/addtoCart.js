@@ -8,16 +8,40 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 function Cart() {
-  var productData = JSON.parse(localStorage.getItem("cartmudasar"));
+  const [value, setValue] = useState(1);
+  const [productData,setProductData] = useState(JSON.parse(localStorage.getItem("cartmudasar")));
   console.log("productData", productData);
   const totalBill = productData.reduce((sum, product) => {
-    sum += product.price;
+    sum += product.price * value;
     return sum;
   }, 0);
   console.log("totalBill", totalBill);
   const checkout = () => {
     localStorage.removeItem("cartmudasar");
   };
+
+  const increement = (id,value) => {
+    const productData = JSON.parse(localStorage.getItem("cartmudasar"));
+    console.log("productData", productData);
+    const newProductData = productData.map((product) => {
+      if (product.id === id) {
+        product.quantity += value;
+      }
+    
+      return product;
+    });
+    localStorage.setItem("cartmudasar", JSON.stringify(newProductData));
+    const updatedProducts = JSON.parse(localStorage.getItem("cartmudasar"));
+    setProductData(updatedProducts);
+
+  };
+  const decrement = () => {
+    if (value > 1) {
+      setValue(value - 1);
+    }
+  };
+  console.log("prodeuct", productData.price);
+  console.log("value", value);
   return (
     <>
       <Box display="flex" justifyContent="center" alignItems="center">
@@ -51,15 +75,37 @@ function Cart() {
                         sx={{
                           "&:last-child td, &:last-child th": { border: 0 },
                         }}
-                        
                       >
                         <TableCell component="th" scope="row">
                           {row.title}
-                         <img src={row.images[0]} alt="product" className="w-[80px] rounded-lg" />
+                          <img
+                            src={row.image}
+                            alt="product"
+                            className="w-[80px] rounded-lg"
+                          />
                         </TableCell>
                         <TableCell align="center">{row.price}</TableCell>
-                        <TableCell align="center">{row.qty}</TableCell>
-                        <TableCell align="center">{row.price}</TableCell>
+                        <TableCell
+                          align="center"
+                          className=" border border-blue-500"
+                        >
+                          <button
+                            className="text-xl bg-green-500 px-2 rounded-sm mr-1"
+                            onClick={() => increement(row.id,-1)}
+                          >
+                            -{" "}
+                          </button>
+                          {row.quantity}
+                          <button
+                            className="text-xl bg-green-500 px-2 rounded-sm ml-1"
+                            onClick={() => increement(row.id,1)}
+                          >
+                            +
+                          </button>{" "}
+                        </TableCell>
+                        <TableCell align="center">
+                          {row.price * row.quantity}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>
@@ -71,7 +117,15 @@ function Cart() {
                     margin: "15px",
                   }}
                 >
-                  Total Amount : {totalBill}
+                  Total Amount : {
+                    // calculate total amount
+                    productData.reduce((sum, product) => {
+                      sum += product.price * product.quantity;
+                      return sum;
+                    }
+                    , 0)
+
+                  }
                 </Typography>
               </TableContainer>
             </Grid>
